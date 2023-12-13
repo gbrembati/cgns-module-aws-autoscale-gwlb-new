@@ -4,7 +4,7 @@ resource "aws_subnet" "gwlbe_subnet1" {
   availability_zone = element(var.availability_zones, 0)
   cidr_block = var.gwlbe_subnet_1_cidr
   tags = {
-    Name = "GWLBe subnet 1"
+    Name = "net-chkp-gwlbe-1"
     Network = "Private"
   }
 }
@@ -15,7 +15,7 @@ resource "aws_route_table" "gwlbe_subnet1_rtb" {
     nat_gateway_id = aws_nat_gateway.nat_gateway1.id
   }
   tags = {
-    Name = "GWLBe Subnet 1 Route Table"
+    Name = "rt-net-chkp-gwlbe-1"
     Network = "Private"
   }
 }
@@ -24,13 +24,12 @@ resource "aws_route_table_association" "gwlbe_subnet1_rtb_assoc" {
   route_table_id = aws_route_table.gwlbe_subnet1_rtb.id
 }
 
-
 resource "aws_subnet" "gwlbe_subnet2" {
   vpc_id = var.vpc_id
   availability_zone = element(var.availability_zones, 1)
   cidr_block = var.gwlbe_subnet_2_cidr
   tags = {
-    Name = "GWLBe subnet 2"
+    Name = "net-chkp-gwlbe-2"
     Network = "Private"
   }
 }
@@ -41,7 +40,7 @@ resource "aws_route_table" "gwlbe_subnet2_rtb" {
     nat_gateway_id = aws_nat_gateway.nat_gateway2.id
   }
   tags = {
-    Name = "GWLBe Subnet 2 Route Table"
+    Name = "rt-net-chkp-gwlbe-2"
     Network = "Private"
   }
 }
@@ -50,14 +49,13 @@ resource "aws_route_table_association" "gwlbe_subnet2_rtb_assoc" {
   route_table_id = aws_route_table.gwlbe_subnet2_rtb.id
 }
 
-
 resource "aws_subnet" "gwlbe_subnet3" {
   count = var.number_of_AZs >= 3 ? 1 :0
   vpc_id = var.vpc_id
   availability_zone = element(var.availability_zones, 2)
   cidr_block = var.gwlbe_subnet_3_cidr
   tags = {
-    Name = "GWLBe subnet 3"
+    Name = "net-chkp-gwlbe-3"
     Network = "Private"
   }
 }
@@ -69,7 +67,7 @@ resource "aws_route_table" "gwlbe_subnet3_rtb" {
     nat_gateway_id = aws_nat_gateway.nat_gateway3[0].id
   }
   tags = {
-    Name = "GWLBe Subnet 3 Route Table"
+    Name = "rt-net-chkp-gwlbe-3"
     Network = "Private"
   }
 }
@@ -86,7 +84,7 @@ resource "aws_subnet" "gwlbe_subnet4" {
   availability_zone = element(var.availability_zones, 3)
   cidr_block = var.gwlbe_subnet_4_cidr
   tags = {
-    Name = "GWLBe subnet 4"
+    Name = "net-chkp-gwlbe-4"
     Network = "Private"
   }
 }
@@ -98,7 +96,7 @@ resource "aws_route_table" "gwlbe_subnet4_rtb" {
     nat_gateway_id = aws_nat_gateway.nat_gateway4[0].id
   }
   tags = {
-    Name = "GWLBe Subnet 4 Route Table"
+    Name = "rt-net-chkp-gwlbe-4"
     Network = "Private"
   }
 }
@@ -108,15 +106,12 @@ resource "aws_route_table_association" "gwlbe_subnet4_rtb_assoc" {
   route_table_id = aws_route_table.gwlbe_subnet4_rtb[0].id
 }
 
-
-
-
 resource "aws_subnet" "nat_gw_subnet1" {
   vpc_id = var.vpc_id
   availability_zone = element(var.availability_zones, 0)
   cidr_block = var.nat_gw_subnet_1_cidr
   tags = {
-    Name = "NAT subnet 1"
+    Name = "net-chkp-nat-1"
     Network = "Private"
   }
 }
@@ -127,7 +122,7 @@ resource "aws_route_table" "nat_gw_subnet1_rtb" {
     gateway_id = var.internet_gateway_id
   }
   tags = {
-    Name = "NAT Subnet 1 Route Table"
+    Name = "rt-net-chkp-nat-1"
     Network = "Public"
   }
 }
@@ -141,7 +136,7 @@ resource "aws_subnet" "nat_gw_subnet2" {
   availability_zone = element(var.availability_zones, 1)
   cidr_block = var.nat_gw_subnet_2_cidr
   tags = {
-    Name = "NAT subnet 2"
+    Name = "net-chkp-nat-2"
     Network = "Private"
   }
 }
@@ -152,7 +147,7 @@ resource "aws_route_table" "nat_gw_subnet2_rtb" {
     gateway_id = var.internet_gateway_id
   }
   tags = {
-    Name = "NAT Subnet 2 Route Table"
+    Name = "rt-net-chkp-nat-2"
     Network = "Public"
   }
 }
@@ -167,7 +162,7 @@ resource "aws_subnet" "nat_gw_subnet3" {
   availability_zone = element(var.availability_zones, 2)
   cidr_block = var.nat_gw_subnet_3_cidr
   tags = {
-    Name = "NAT subnet 3"
+    Name = "net-chkp-nat-3"
     Network = "Private"
   }
 }
@@ -179,7 +174,7 @@ resource "aws_route_table" "nat_gw_subnet3_rtb" {
     gateway_id = var.internet_gateway_id
   }
   tags = {
-    Name = "NAT Subnet 3 Route Table"
+    Name = "rt-net-chkp-nat-3"
     Network = "Public"
   }
 }
@@ -195,7 +190,7 @@ resource "aws_subnet" "nat_gw_subnet4" {
   availability_zone = element(var.availability_zones, 3)
   cidr_block = var.nat_gw_subnet_4_cidr
   tags = {
-    Name = "NAT subnet 4"
+    Name = "net-chkp-nat-4"
     Network = "Private"
   }
 }
@@ -207,7 +202,7 @@ resource "aws_route_table" "nat_gw_subnet4_rtb" {
     gateway_id = var.internet_gateway_id
   }
   tags = {
-    Name = "NAT Subnet 4 Route Table"
+    Name = "rt-net-chkp-nat-4"
     Network = "Public"
   }
 }
@@ -274,7 +269,7 @@ resource "aws_vpc_endpoint" "gwlb_endpoint1" {
   service_name = module.gwlb.gwlb_service_name
   subnet_ids = aws_subnet.gwlbe_subnet1[*].id
   tags = {
-    "Name" = "gwlb_endpoint1"
+    "Name" = "gwlb-chkp-endpoint-1"
   }
 }
 resource "aws_vpc_endpoint" "gwlb_endpoint2" {
@@ -284,7 +279,7 @@ resource "aws_vpc_endpoint" "gwlb_endpoint2" {
   service_name = module.gwlb.gwlb_service_name
   subnet_ids = aws_subnet.gwlbe_subnet2[*].id
   tags = {
-    "Name" = "gwlb_endpoint2"
+    "Name" = "gwlb-chkp-endpoint-2"
   }
 }
 resource "aws_vpc_endpoint" "gwlb_endpoint3" {
@@ -295,7 +290,7 @@ resource "aws_vpc_endpoint" "gwlb_endpoint3" {
   service_name = module.gwlb.gwlb_service_name
   subnet_ids = aws_subnet.gwlbe_subnet3[*].id
   tags = {
-    "Name" = "gwlb_endpoint3"
+    "Name" = "gwlb-chkp-endpoint-3"
   }
 }
 resource "aws_vpc_endpoint" "gwlb_endpoint4" {
@@ -306,10 +301,9 @@ resource "aws_vpc_endpoint" "gwlb_endpoint4" {
   service_name = module.gwlb.gwlb_service_name
   subnet_ids = aws_subnet.gwlbe_subnet4[*].id
   tags = {
-    "Name" = "gwlb_endpoint4"
+    "Name" = "gwlb-chkp-endpoint-4"
   }
 }
-
 
 resource "aws_route_table" "tgw_attachment_subnet1_rtb" {
   vpc_id = var.vpc_id
@@ -318,7 +312,7 @@ resource "aws_route_table" "tgw_attachment_subnet1_rtb" {
     vpc_endpoint_id = aws_vpc_endpoint.gwlb_endpoint1.id
   }
   tags = {
-    Name = "TGW Attachment Subnet 1 Route Table"
+    Name = "rt-net-chkp-tgw-1"
     Network = "Private"
   }
 }
@@ -333,7 +327,7 @@ resource "aws_route_table" "tgw_attachment_subnet2_rtb" {
     vpc_endpoint_id = aws_vpc_endpoint.gwlb_endpoint2.id
   }
   tags = {
-    Name = "TGW Attachment Subnet 2 Route Table"
+    Name = "rt-net-chkp-tgw-2"
     Network = "Private"
   }
 }
@@ -349,7 +343,7 @@ resource "aws_route_table" "tgw_attachment_subnet3_rtb" {
     vpc_endpoint_id = aws_vpc_endpoint.gwlb_endpoint3[0].id
   }
   tags = {
-    Name = "TGW Attachment Subnet 3 Route Table"
+    Name = "rt-net-chkp-tgw-3"
     Network = "Private"
   }
 }
@@ -366,7 +360,7 @@ resource "aws_route_table" "tgw_attachment_subnet4_rtb" {
     vpc_endpoint_id = aws_vpc_endpoint.gwlb_endpoint4[0].id
   }
   tags = {
-    Name = "TGW Attachment Subnet 4 Route Table"
+    Name = "rt-net-chkp-tgw-4"
     Network = "Private"
   }
 }
@@ -375,7 +369,6 @@ resource "aws_route_table_association" "tgw_attachment4_rtb_assoc" {
   subnet_id      = var.transit_gateway_attachment_subnet_4_id
   route_table_id = aws_route_table.tgw_attachment_subnet4_rtb[0].id
 }
-
 
 resource "aws_eip" "nat_gw_public_address1" {
 }
@@ -394,7 +387,7 @@ resource "aws_nat_gateway" "nat_gateway1" {
   subnet_id     = aws_subnet.nat_gw_subnet1.id
 
   tags = {
-    Name = "NatGW1"
+    Name = "natgw-chkp-1"
   }
 }
 resource "aws_nat_gateway" "nat_gateway2" {
@@ -403,7 +396,7 @@ resource "aws_nat_gateway" "nat_gateway2" {
   subnet_id     = aws_subnet.nat_gw_subnet2.id
 
   tags = {
-    Name = "NatGW2"
+    Name = "natgw-chkp-2"
   }
 }
 resource "aws_nat_gateway" "nat_gateway3" {
@@ -413,7 +406,7 @@ resource "aws_nat_gateway" "nat_gateway3" {
   subnet_id     = aws_subnet.nat_gw_subnet3[0].id
 
   tags = {
-    Name = "NatGW3"
+    Name = "natgw-chkp-3"
   }
 }
 resource "aws_nat_gateway" "nat_gateway4" {
@@ -423,6 +416,6 @@ resource "aws_nat_gateway" "nat_gateway4" {
   subnet_id     = aws_subnet.nat_gw_subnet4[0].id
 
   tags = {
-    Name = "NatGW4"
+    Name = "natgw-chkp-4"
   }
 }
