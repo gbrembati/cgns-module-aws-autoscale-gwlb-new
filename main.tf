@@ -216,7 +216,7 @@ module "gwlb" {
   source  = "gbrembati/cgns-module-gwlb/aws"
   version = "1.0.1"
   
-  vpc_id = var.vpc_id
+  vpc_id     = var.vpc_id
   subnet_ids = var.gateways_subnets
 
   // --- General Settings ---
